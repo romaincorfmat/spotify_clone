@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/romaincorfmat/Desktop/Dev project/spotify_clone/app/layout\":[\"static/media/192e369fd43210ef-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

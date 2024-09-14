@@ -27,6 +27,8 @@ const Header = ({ children, className }: HeaderProps) => {
 		// handle logout in the future
 		const { error } = await supabaseClient.auth.signOut();
 
+		// //! Make sure it doesnt break the code later. I added it to open Authmodal when  user logout.
+		authModal.onOpen();
 		// TODO: Reset any played song in the future
 		router.refresh();
 

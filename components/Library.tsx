@@ -1,10 +1,30 @@
 "use client";
+
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
+import useUploadModal from "@/hooks/useUploadModal";
+import { Song } from "@/types";
+import MediaItem from "./MediaItem";
 
-const Library = () => {
+interface LibraryProps {
+	songs: Song[];
+}
+
+const Library = ({ songs }: LibraryProps) => {
+	const authModal = useAuthModal();
+	const uploadModal = useUploadModal();
+	const { user } = useUser();
+
 	const onClick = () => {
-		//handle upload later
+		// if no user logged in, open auth modal when user want to upload song to the library
+		if (!user) {
+			return authModal.onOpen();
+		}
+		//handle upload
+		//TODO: Check for subscription before uploading
+		return uploadModal.onOpen();
 	};
 
 	return (
@@ -26,7 +46,13 @@ const Library = () => {
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2 mt-4 px-3">
-				List of songs{" "}
+				{songs.map((item) => (
+					<MediaItem
+						onClick={() => {}}
+						key={item.id}
+						data={item}
+					/>
+				))}
 			</div>
 		</div>
 	);
